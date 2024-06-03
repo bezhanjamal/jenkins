@@ -3,13 +3,13 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub') // Use the ID of your Docker Hub credentials
-        DOCKERHUB_REPO = 'yourdockerhubusername/your-repo-name'
+        DOCKERHUB_REPO = 'bezhan759/assignment'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/yourusername/your-repo.git'
+                git branch: 'main', url: 'https://github.com/bezhanjamal/jenkins.git'
             }
         }
 
