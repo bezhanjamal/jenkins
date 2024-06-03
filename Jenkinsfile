@@ -15,7 +15,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'python -m venv venv'
+                bat 'python3 -m venv venv'
                 bat '.\\venv\\Scripts\\pip install -r requirements.txt'
             }
         }
