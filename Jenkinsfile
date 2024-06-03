@@ -24,7 +24,7 @@ pipeline {
 
         stage('Test') {
             steps {
-               bat '.\\venv\\Scripts\\python -m unittest discover -s test -p "test_app.py"'
+               bat '.\\venv\\Scripts\\python -m unittest discover -s tests -p "test_app.py"'
             }
         }
 
