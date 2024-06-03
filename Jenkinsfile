@@ -2,27 +2,27 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub') // Add the ID of your Docker Hub credentials
-        DOCKERHUB_REPO = 'bezhan759/assignment'
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub') // Use the ID of your Docker Hub credentials
+        DOCKERHUB_REPO = 'yourdockerhubusername/your-repo-name'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/bezhanjamal/jenkins.git'
+                git branch: 'main', url: 'https://github.com/yourusername/your-repo.git'
             }
         }
 
         stage('Build') {
             steps {
-                sh 'python3 -m venv venv'
-                sh './venv/bin/pip install -r requirements.txt'
+                bat 'python -m venv venv'
+                bat '.\\venv\\Scripts\\pip install -r requirements.txt'
             }
         }
 
         stage('Test') {
             steps {
-                sh './venv/bin/python -m unittest discover'
+                bat '.\\venv\\Scripts\\python -m unittest discover'
             }
         }
 
