@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub') // Use the ID of your Docker Hub credentials
         DOCKERHUB_REPO = 'bezhan759/assignment'
-        PATH = "C:\\WINDOWS\\SYSTEM32;C:\\Users\\snabe\\AppData\\Local\\Programs\\Python\\Python312;%PATH%:C:\\Program Files\\Docker\\Docker\\resources\\bin"
+        PATH = "C:\\WINDOWS\\SYSTEM32;C:\\Users\\snabe\\AppData\\Local\\Programs\\Python\\Python312;%PATH%:C:\\'Program Files'\\Docker\\Docker\\resources\\bin"
     
     }
 
