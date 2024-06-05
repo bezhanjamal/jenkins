@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub') // Use the ID of your Docker Hub credentials
-        DOCKERHUB_REPO = 'bezhan759/assignment'
+       registryCredential = 'dockerhub_id'
+        registry = "bezhan759/assignment"
         PATH = 'C:\\WINDOWS\\SYSTEM32;C:\\Users\\snabe\\AppData\\Local\\Programs\\Python\\Python312;%PATH%;C:\\"Program Files"\\Docker\\Docker\\resources\\bin;C:\\"Program Files"\\Git\\bin'
     
     }
@@ -31,7 +31,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("${env.DOCKERHUB_REPO}:${env.BUILD_ID}")
+                    dockerImage = docker.build("${env.registry}:${env.BUILD_ID}")
                 }
             }
         }
@@ -39,10 +39,9 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', '${DOCKERHUB_CREDENTIALS}') {
-                        dockerImage.push()
-                        dockerImage.push('latest')
-                    }
+                    docker.withRegistry( '', registryCredential ) {
+dockerImage.push()
+}
                 }
             }
         }
